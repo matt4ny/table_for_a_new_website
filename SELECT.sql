@@ -13,15 +13,16 @@ FROM Artist WHERE name NOT LIKE '% %';
 
 SELECT title 
 FROM Track 
-WHERE title LIKE 'My %'     
-   OR title LIKE '% my %'   
-   OR title LIKE '% my'     
-   OR title LIKE 'My'       
-   OR title LIKE 'Мой %' 
-   OR title LIKE '% мой %' 
-   OR title LIKE '% мой' OR title LIKE 'Мой';
+WHERE title ILIKE 'my %'     
+   OR title ILIKE '% my %'   
+   OR title ILIKE '% my'     
+   OR title ILIKE 'my'       
+   OR title ILIKE 'мой %' 
+   OR title ILIKE '% мой %' 
+   OR title ILIKE '% мой' 
+   OR title ILIKE 'мой';
 
-   SELECT g.name AS genre_name, COUNT(ag.artist_id) AS artist_count
+SELECT g.name AS genre_name, COUNT(ag.artist_id) AS artist_count
 FROM Genre g
 JOIN ArtistGenre ag ON g.id = ag.genre_id
 GROUP BY g.name; 
